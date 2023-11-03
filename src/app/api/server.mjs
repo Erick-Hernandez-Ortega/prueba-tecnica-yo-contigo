@@ -8,8 +8,32 @@ app.use(cors());
 
 app.use(express.json());
 
+
+app.get("/usuarios/:id", (req, res) => {
+    const id = req.params.id;
+
+    connection.query(`SELECT * FROM prueba.usuarios WHERE id = ${id};`, (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ error: 'Error al consultar la base de datos', title: "Operación Incorrecta" });
+            return;
+        }
+
+        if (results.length === 0) {
+            // Si no se encontró ningún usuario con el ID especificado, devuelve un código de estado 404 (No encontrado).
+            res.status(404).json({ error: 'Usuario no encontrado', title: "Operación Incorrecta" });
+            return;
+        }
+
+        // Si se encontró un usuario con el ID especificado, devuelve ese usuario.
+        res.status(200).json({ message: "Usuario encontrado correctamente", user: results[0], title: "Operación Correcta" });
+    })
+});
+
+
+
 app.get('/usuarios', (req, res) => {
-    connection.query('SELECT * FROM usuarios', (err, results) => {
+    connection.query('SELECT id, nombre, correo FROM prueba.usuarios;', (err, results) => {
         if (err) {
             res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
             return;
@@ -36,7 +60,7 @@ app.post('/usuarios', (req, res) => {
 app.delete("/usuarios/:id", (req, res) => {
     const id = req.params.id;
 
-    connection.query(`DELETE FROM prueba.usuarios WHERE id = ${id}`, (err, results) => {
+    connection.query(`DELETE FROM prueba.usuarios WHERE id = ${id};`, (err, results) => {
         if (err) {
             console.log(err);
             res.status(500).json({ error: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
