@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreateUsersComponent } from './components/create-users/create-users.component';
+import { FormUsersComponent } from './components/form-users/form-users.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,12 +17,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HeaderComponent,
     FooterComponent,
     UsersComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateUsersComponent,
+    FormUsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

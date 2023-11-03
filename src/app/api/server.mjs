@@ -16,6 +16,13 @@ app.get('/usuarios', (req, res) => {
     });
 });
 
+app.post('/usuarios',(req, res) => {
+    
+    connection.query('', (err, results) => {
+        
+    })
+})
+
 app.listen(3000, () => {
     console.log('API en ejecución en el puerto 3000');
 });

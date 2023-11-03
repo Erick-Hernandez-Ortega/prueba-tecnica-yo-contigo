@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="card my-3 w-50">
+      <div class="card-body">
+        <h5 class="text-center">Ingresa datos</h5>
+
+        <div class="mb-3">
+          <label for="nombreLabel" class="form-label text-secondary">Nombre</label>
+          <input type="text" class="form-control" placeholder="Pepe Ortega" [(ngModel)]="nombre">
+        </div>
+
+        <div class="mb-3">
+          <label for="emailLabel" class="form-label text-secondary">Correo Electronico <span
+              class="text-danger">*</span></label>
+          <input type="email" class="form-control" placeholder="Pepe@gmail.com" required [(ngModel)]="email">
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneLabel" class="form-label text-secondary">Telefono</label>
+          <input type="text" class="form-control" placeholder="3313197707" [(ngModel)]="telefono" maxlength="10" (input)="validar()">
+          <div class="form-text text-secondary" *ngIf="this.telefono.length != 10">
+            Debe de ser 10 digitos y no tener letras
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneLabel" class="form-label text-secondary">Fecha de nacimiento</label>
+          <input type="date" class="form-control" [(ngModel)]="fecha" (input)="esMenor()">
+          <div class="form-text text-secondary" *ngIf="isMenor">
+            No menores de edad
+          </div>
+        </div>
+
+        <label for="Label" class="form-label d-block">Sexo:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" value="Hombre" [(ngModel)]="sexo">
+          <label class="form-check-label text-secondary" for="flexradio-h">
+            Hombre
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" value="Mujer" [(ngModel)]="sexo">
+          <label class="form-check-label text-secondary" for="flexradio-m">
+            Mujer
+          </label>
+        </div>
+
+        <div class="my-3 d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary" (click)="registrar()" [disabled]="!validar()">Registar usuario</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
