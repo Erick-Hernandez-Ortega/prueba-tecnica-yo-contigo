@@ -28,13 +28,13 @@ app.get("/usuarios/:id", (req, res) => {
     })
 });
 
-app.put("/usuarios/", (req, res) => {
+app.put("/usuarios", (req, res) => {
     const data = req.body;
 
     connection.query(`UPDATE  prueba.usuarios 
 
                         SET nombre='${data.nombre}', 
-                        correo='${data.correo}', 
+                        correo='${data.email}', 
                         fecha_nacimiento='${data.fecha}', 
                         sexo='${data.sexo}', 
                         telefono='${data.telefono}' 

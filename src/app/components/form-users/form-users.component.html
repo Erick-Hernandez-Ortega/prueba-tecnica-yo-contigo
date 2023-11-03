@@ -2,7 +2,8 @@
   <div class="d-flex justify-content-center align-items-center">
     <div class="card my-3 w-50">
       <div class="card-body">
-        <h5 class="text-center">Ingresa datos</h5>
+        <h5 class="text-center" *ngIf="!update">Ingresa datos</h5>
+        <h5 class="text-center" *ngIf="update">Actualiza datos</h5>
 
         <div class="mb-3">
           <label for="nombreLabel" class="form-label text-secondary">Nombre</label>
@@ -46,7 +47,8 @@
         </div>
 
         <div class="my-3 d-flex justify-content-center">
-          <button type="button" class="btn btn-secondary" (click)="registrar()" [disabled]="!validar()">Registar usuario</button>
+          <button type="button" class="btn btn-secondary" (click)="registrar()" [disabled]="!validar()" *ngIf="!update">Registar usuario</button>
+          <button type="button" class="btn btn-secondary" (click)="actualizar()" [disabled]="!validar()" *ngIf="update">Actualizar usuario</button>
         </div>
 
       </div>

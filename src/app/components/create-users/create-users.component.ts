@@ -7,12 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-users.component.css']
 })
 export class CreateUsersComponent implements OnInit {
+  parametro : number = 0
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const parametro = params['id'];
+      this.parametro = params['id'];
     });
   }
 
