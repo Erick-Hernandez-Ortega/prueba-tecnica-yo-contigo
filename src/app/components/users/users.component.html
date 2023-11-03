@@ -13,7 +13,8 @@
         <th scope="row">{{usuario.id}}</th>
         <td>{{usuario.nombre}}</td>
         <td>{{usuario.correo}}</td>
-        <td>
+        <td class="d-flex gap-3">
+          <button type="button" class="btn btn-primary" (click)="actualizar(usuario.id)">Actualizar</button>
           <button type="button" class="btn btn-danger" (click)="borrar(usuario.id)">Borrar</button>
         </td>
       </tr>
@@ -22,7 +23,6 @@
 </div>
 
 <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modalRegister" #abrirModal>
-  Launch demo modal
 </button>
 
 <!-- Modal -->

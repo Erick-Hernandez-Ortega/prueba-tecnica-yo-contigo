@@ -20,17 +20,35 @@ app.get("/usuarios/:id", (req, res) => {
         }
 
         if (results.length === 0) {
-            // Si no se encontró ningún usuario con el ID especificado, devuelve un código de estado 404 (No encontrado).
             res.status(404).json({ error: 'Usuario no encontrado', title: "Operación Incorrecta" });
             return;
         }
 
-        // Si se encontró un usuario con el ID especificado, devuelve ese usuario.
         res.status(200).json({ message: "Usuario encontrado correctamente", user: results[0], title: "Operación Correcta" });
     })
 });
 
+app.put("/usuarios/", (req, res) => {
+    const data = req.body;
 
+    connection.query(`UPDATE  prueba.usuarios 
+
+                        SET nombre='${data.nombre}', 
+                        correo='${data.correo}', 
+                        fecha_nacimiento='${data.fecha}', 
+                        sexo='${data.sexo}', 
+                        telefono='${data.telefono}' 
+                        
+                        WHERE id='${data.id}';`,
+        (err, results) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
+                return;
+            }
+            res.status(200).json({ message: "Se actualizado correctamente en la BD", title: "Operacion Correcta" });
+        })
+})
 
 app.get('/usuarios', (req, res) => {
     connection.query('SELECT id, nombre, correo FROM prueba.usuarios;', (err, results) => {
