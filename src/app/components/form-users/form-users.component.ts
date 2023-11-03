@@ -59,8 +59,6 @@ export class FormUsersComponent implements OnInit {
         'Content-Type': 'application/json',
       }),
     };
-
-    console.log(data);
     
     this.http
       .put('http://localhost:3000/usuarios', data, httpOptions)
@@ -74,6 +72,10 @@ export class FormUsersComponent implements OnInit {
       );
 
     this.miBoton.nativeElement.click();
+  }
+
+  recargarPagina() : void {
+    window.location.reload();
   }
 
   validar(): boolean {
@@ -103,7 +105,7 @@ export class FormUsersComponent implements OnInit {
       const edad = diferenciaTiempo / (1000 * 60 * 60 * 24 * 365.25);
       const edadMinima = 18;
 
-      // this.isMenor = edad < edadMinima;
+      this.isMenor = edad < edadMinima;
       return edad < edadMinima;
     }
   }

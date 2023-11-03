@@ -43,7 +43,7 @@ app.put("/usuarios", (req, res) => {
         (err, results) => {
             if (err) {
                 console.log(err);
-                res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
+                res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrecta" });
                 return;
             }
             res.status(200).json({ message: "Se actualizado correctamente en la BD", title: "Operacion Correcta" });
@@ -68,7 +68,7 @@ app.post('/usuarios', (req, res) => {
         (err, results) => {
             if (err) {
                 console.log(err);
-                res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
+                res.status(500).json({ message: 'Error al consultar la base de datos', title: "Operacion Incorrecta" });
                 return;
             }
             res.status(200).json({ message: "Se ingresado correctamente en la BD", title: "Operacion Correcta" });
@@ -81,7 +81,7 @@ app.delete("/usuarios/:id", (req, res) => {
     connection.query(`DELETE FROM prueba.usuarios WHERE id = ${id};`, (err, results) => {
         if (err) {
             console.log(err);
-            res.status(500).json({ error: 'Error al consultar la base de datos', title: "Operacion Incorrectra" });
+            res.status(500).json({ error: 'Error al consultar la base de datos', title: "Operacion Incorrecta" });
             return;
         }
         res.status(200).json({ message: "Se borrado correctamente en la BD", title: "Operacion Correcta" });

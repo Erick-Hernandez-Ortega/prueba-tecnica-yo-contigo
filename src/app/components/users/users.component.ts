@@ -18,13 +18,14 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  ngOnInit() { }
+
   borrar(id: number): void {
 
     this.http
       .delete(`http://localhost:3000/usuarios/${id}`)
       .subscribe(
         (response) => {
-          // Maneja la respuesta del servidor
           this.response = response;
         },
         (error) => {
@@ -35,9 +36,11 @@ export class UsersComponent implements OnInit {
     this.miBoton.nativeElement.click();
   }
 
-  actualizar(id:number) : void{
+  actualizar(id: number): void {
     this.router.navigate(['ingresar', id]);
   }
 
-  ngOnInit() { }
+  recargarPagina(): void {
+    window.location.reload();
+  }
 }
