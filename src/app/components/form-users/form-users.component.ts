@@ -32,14 +32,19 @@ export class FormUsersComponent implements OnInit {
   }
 
   esMenor(): boolean {
-    const fechaNacimiento = new Date(this.fecha);
-    const fechaActual = new Date();
-    const diferenciaTiempo = fechaActual.getTime() - fechaNacimiento.getTime();
-    const edad = diferenciaTiempo / (1000 * 60 * 60 * 24 * 365.25);
-    const edadMinima = 18;
+    if (this.fecha == "") {
+      return true
+    } else {
+      const fechaNacimiento = new Date(this.fecha);
+      const fechaActual = new Date();
+      const diferenciaTiempo = fechaActual.getTime() - fechaNacimiento.getTime();
+      const edad = diferenciaTiempo / (1000 * 60 * 60 * 24 * 365.25);
+      const edadMinima = 18;
 
-    this.isMenor = edad < edadMinima;
-    return edad < edadMinima;
+      this.isMenor = edad < edadMinima;
+      return edad < edadMinima;
+    }
+
   }
 
   registrar(): void {
