@@ -14,9 +14,31 @@
         <td>{{usuario.nombre}}</td>
         <td>{{usuario.correo}}</td>
         <td>
-          <button type="button" class="btn btn-danger">Borrar</button>
+          <button type="button" class="btn btn-danger" (click)="borrar(usuario.id)">Borrar</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modalRegister" #abrirModal>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRegister" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="labelModalRegister">{{response.title}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{response.message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>
